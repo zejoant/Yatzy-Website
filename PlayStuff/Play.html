@@ -1,0 +1,156 @@
+</html lang = "en">
+    <head>  
+        <meta charset="UTF-8">
+        <link rel="icon" type="image/PNG" href="myFace.PNG">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:400,400i,600,600i,700,700i%7CPoppins:300,300i,400,400i,700,700i&amp;display=swap" media="all">
+        <title>BönaDeluxe</title>
+        <link rel="stylesheet" href="Play.css">
+        <script src="play.js"></script>
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+    </head>
+    
+    <body>  
+        <nav class="navbar navbar-expand-lg fixed-top"><!--bootstrap navbar-->
+            <div class="container-fluid">
+                <a class="navbar-brand" href="../index.html"> <!--logo-->
+                    <img src="../Images/logo.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-center"></img>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar"><!--button that appears for smaller screens-->
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel"><!--side navbar that appears on smaller screen when clicking the navbar button-->
+                    <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body"> <!--all navbar links-->
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="link" href="../index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="current" aria-current="page">Play</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="link" href="../RulesStuff/Rules.html">Rules</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div id="overlay"> <!--a window that shows up when the game ends-->
+            <div id="popup">Dude you broke something. Now nobody won.</div>
+            <button id="reset-button" onclick="location.href = '../PlayStuff/Play.html'">Reset Game</button>
+        </div>
+
+        <div id="content">
+            <div id="playspace"> <!--the left side of the page where the dices and buttons to roll are located-->
+                <div id="dices"> <!--all the dices-->
+                    <button id="dice1" class="dice" onclick="DiceLock(1)">
+                        <img src="../Images/dice 0.svg" alt="dice1">
+                    </button>
+                    <button id="dice2" class="dice" onclick="DiceLock(2)">
+                        <img src="../Images/dice 0.svg" alt="dice2">
+                    </button>
+                    <button id="dice3" class="dice" onclick="DiceLock(3)">
+                        <img src="../Images/dice 0.svg" alt="dice3">
+                    </button>
+                    <button id="dice4" class="dice" onclick="DiceLock(4)">
+                        <img src="../Images/dice 0.svg" alt="dice4">
+                    </button>
+                    <button id="dice5" class="dice" onclick="DiceLock(5)">
+                        <img src="../Images/dice 0.svg" alt="dice5">
+                    </button>
+                </div>
+                <p>Click the dice you want to save</p>
+                <div id="line"></div>
+                <p id="rollCount">0/3</p>
+                <button id="roll-button" onclick="Roll()">Roll Dice</button>
+            </div>
+            <div id="scoreside"> <!--The right side of the page where the scoreboard is located-->
+                <div id="scoreboard1"> <!--contains everything in the scoreboard-->
+                    <div id="current-player"> <!--the row that shows which player is playing-->
+                        <div class="arrow">Player</div>
+                        <img src="../Images/Arrow-1.svg" alt="arrow" class="arrow" id="player-1"></img>
+                        <img src="../Images/Arrow-2.svg" alt="arrow" class="arrow" id="player-2"></img>
+                    </div>
+                    <div id="score-row"> <!--the row that shows the players scores-->
+                        <div class="grid-item">Total Score</div>
+                        <div class="grid-item" id="a14">0</div>
+                        <div class="grid-item" id="b14">0</div>
+                    </div>
+                    <button class="grid-row" onfocusout="ScorePreview(1, false)" onfocus="ScorePreview(1, true)" onmouseleave="ScorePreview(1, false)" onmouseover="ScorePreview(1, true)" onclick="SaveScore(1)"> <!--every row from here on out is just each score category-->
+                        <div class="grid-item">Aces</div>
+                        <div class="grid-item" id="a1">-</div>
+                        <div class="grid-item" id="b1">-</div>
+                    </button>
+                    <button class="grid-row" onfocusout="ScorePreview(2, false)" onfocus="ScorePreview(2, true)" onmouseleave="ScorePreview(2, false)" onmouseover="ScorePreview(2, true)" onclick="SaveScore(2)">
+                        <div class="grid-item">Twos</div>
+                        <div class="grid-item" id="a2">-</div>
+                        <div class="grid-item" id="b2">-</div>
+                    </button>
+                    <button class="grid-row" onfocusout="ScorePreview(3, false)" onfocus="ScorePreview(3, true)" onmouseleave="ScorePreview(3, false)" onmouseover="ScorePreview(3, true)" onclick="SaveScore(3)">
+                        <div class="grid-item">Threes</div>
+                        <div class="grid-item" id="a3">-</div>
+                        <div class="grid-item" id="b3">-</div>
+                    </button>
+                    <button class="grid-row" onfocusout="ScorePreview(4, false)" onfocus="ScorePreview(4, true)" onmouseleave="ScorePreview(4, false)" onmouseover="ScorePreview(4, true)" onclick="SaveScore(4)">
+                        <div class="grid-item">Fours</div>
+                        <div class="grid-item" id="a4">-</div>
+                        <div class="grid-item" id="b4">-</div>
+                    </button>
+                    <button class="grid-row" onfocusout="ScorePreview(5, false)" onfocus="ScorePreview(5, true)" onmouseleave="ScorePreview(5, false)" onmouseover="ScorePreview(5, true)" onclick="SaveScore(5)">
+                        <div class="grid-item">Fives</div>
+                        <div class="grid-item" id="a5">-</div>
+                        <div class="grid-item" id="b5">-</div>
+                    </button>
+                    <button class="grid-row" onfocusout="ScorePreview(6, false)" onfocus="ScorePreview(6, true)" onmouseleave="ScorePreview(6, false)" onmouseover="ScorePreview(6, true)" onclick="SaveScore(6)">
+                        <div class="grid-item">Sixes</div>
+                        <div class="grid-item" id="a6">-</div>
+                        <div class="grid-item" id="b6">-</div>
+                    </button>
+                    <button class="grid-row" onfocusout="ScorePreview(7, false)" onfocus="ScorePreview(7, true)" onmouseleave="ScorePreview(7, false)" onmouseover="ScorePreview(7, true)" onclick="SaveScore(7)">
+                        <div class="grid-item">3 of a Kind</div>
+                        <div class="grid-item" id="a7">-</div>
+                        <div class="grid-item" id="b7">-</div>
+                    </button>
+                    <button class="grid-row" onfocusout="ScorePreview(8, false)" onfocus="ScorePreview(8, true)" onmouseleave="ScorePreview(8, false)" onmouseover="ScorePreview(8, true)" onclick="SaveScore(8)">
+                        <div class="grid-item">4 of a Kind</div>
+                        <div class="grid-item" id="a8">-</div>
+                        <div class="grid-item" id="b8">-</div>
+                    </button>
+                    <button class="grid-row" onfocusout="ScorePreview(9, false)" onfocus="ScorePreview(9, true)" onmouseleave="ScorePreview(9, false)" onmouseover="ScorePreview(9, true)" onclick="SaveScore(9)">
+                        <div class="grid-item">Full House</div>
+                        <div class="grid-item" id="a9">-</div>
+                        <div class="grid-item" id="b9">-</div>
+                    </button>
+                    <button class="grid-row" onfocusout="ScorePreview(10, false)" onfocus="ScorePreview(10, true)" onmouseleave="ScorePreview(10, false)" onmouseover="ScorePreview(10, true)" onclick="SaveScore(10)">
+                        <div class="grid-item">Ladder of 4</div>
+                        <div class="grid-item" id="a10">-</div>
+                        <div class="grid-item" id="b10">-</div>
+                    </button>
+                    <button class="grid-row" onfocusout="ScorePreview(11, false)" onfocus="ScorePreview(11, true)" onmouseleave="ScorePreview(11, false)" onmouseover="ScorePreview(11, true)" onclick="SaveScore(11)">
+                        <div class="grid-item">Ladder of 5</div>
+                        <div class="grid-item" id="a11">-</div>
+                        <div class="grid-item" id="b11">-</div>
+                    </button>
+                    <button class="grid-row" onfocusout="ScorePreview(12, false)" onfocus="ScorePreview(12, true)" onmouseleave="ScorePreview(12, false)" onmouseover="ScorePreview(12, true)" onclick="SaveScore(12)">
+                        <div class="grid-item">Yahtzee</div>
+                        <div class="grid-item" id="a12">-</div>
+                        <div class="grid-item" id="b12">-</div>
+                    </button>
+                    <button class="grid-row" onfocusout="ScorePreview(13, false)" onfocus="ScorePreview(13, true)" onmouseleave="ScorePreview(13, false)" onmouseover="ScorePreview(13, true)" onclick="SaveScore(13)">
+                        <div class="grid-item">Chance</div>
+                        <div class="grid-item" id="a13">-</div>
+                        <div class="grid-item" id="b13">-</div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html> 

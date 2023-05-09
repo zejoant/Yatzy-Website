@@ -1,0 +1,113 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+a{
+    margin-right: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 1.3em;
+}
+p{
+    color: #4F5C69;
+}
+
+.navbar{ /*Bootstrap navbar color and outline*/
+    background: linear-gradient(to right, #D4E3EC, #A1ABCE);
+    outline: 2px solid white;
+} 
+.offcanvas-header{ /*color for the side-navbar for narrower screens*/
+    background: linear-gradient(to right, #D4E3EC, #D4E3EC);
+}
+.navbar-toggler-icon{ /* color of navbar button icon*/
+    color: black; 
+}   
+.navbar-brand{ /*just makes sure there isnt any padding/margin on the logo*/
+    padding: 0;
+    margin: 0;
+}
+.link{ /*removes blue color and line from the nav links*/
+    color: black;
+    text-decoration: none;
+
+}
+.link:hover{ /* decoration when hovering the nav links*/
+    color: white;
+    background: #7F84A1;
+    border-radius: 5px;
+}
+#current{ /*current link decoration*/
+    color: white;
+    background: #939db6;
+    border-radius: 5px;
+}
+#content{ /*everything except the navbar on the page*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 700px;
+    width: 100%;
+    margin-top: 100px;
+}
+#content-text{ /*specifications for the rules text*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    text-align: center;
+    margin-bottom: 100px;
+}
+.line{
+    display: flex;
+    width: 70%;
+    background: #D4E3EC;
+    height: 5px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+#content-categories{/*specifications for the colmun of rules*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+}
+.category-row{ /*specifications for every row, i.e Aces, Twos... Full House... Chance.*/
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 110%;
+    background: linear-gradient(to right, white 10%, #E6F2FA 20% 80%, white 90%);
+    margin-bottom: 20px;
+    border-radius: 10px;
+    padding-left: 20%;
+    padding-right: 20%;
+}
+.row-item{/*specifications for the items in each row*/
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    width: 50%;
+    margin-top: 1rem;
+    align-items: center;
+}
+
+
+@media only screen and (max-width: 991px) { /*responsive adjustments for when the screen is less than 991 pixels */
+    #content-text{
+        width: 70%;
+    }
+    .category-row{/* row needs be wider at this screen width or else its to pressed together*/
+        width: 200%;
+    }
+}
+@media only screen and (max-width: 600px) { /*responsive adjustments for when the screen is less than 600 pixels */
+    #content-text{
+        width: 90%;
+        font-size: 0.9em;
+    }
+    .category-row{ /* row needs to have smaller gradient at this screen width so the text doesnt go outside of it*/
+        background: linear-gradient(to right, white 5%, #E2F4FF 10% 90%, white 95%);
+    }
+}

@@ -1,0 +1,351 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif; /*font*/
+    background: url(../Images/wave-haikei-vertical.svg); /*wave pattern in the background that devides left and right*/
+    background-size: cover;
+}
+a{
+    margin-right: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 1.3em;
+}
+p{
+    color: #4F5C69;
+}
+
+.navbar{ /*Bootstrap navbar color and outline*/
+    background: linear-gradient(to right, #D4E3EC, #A1ABCE);
+    outline: 2px solid white;
+} 
+.offcanvas-header{ /*color for the side-navbar for narrower screens*/
+    background: linear-gradient(to right, #D4E3EC, #D4E3EC);
+}
+.navbar-toggler-icon{ /* color of navbar button icon*/
+    color: black; 
+}   
+.navbar-brand{ /*just makes sure there isnt any padding/margin on the logo*/
+    padding: 0;
+    margin: 0;
+}
+.link{ /*removes blue color and line from the nav links*/
+    color: black;
+    text-decoration: none;
+
+}
+.link:hover{ /* decoration when hovering the nav links*/
+    color: white;
+    background: #7F84A1;
+    border-radius: 5px;
+}
+#current{ /*current link decoration*/
+    color: white;
+    background: #939db6;
+    border-radius: 5px;
+}
+#content{ /*everything except the navbar on the page*/
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    height: 100%;
+    min-height: 650px;
+    width: 100%;
+}
+#playspace{ /*everything on the side with the dice and roll button*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+#dices{ /*dice position, direction, etc*/
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5px;
+    width: 100%;
+    justify-content: space-evenly;
+}
+.dice{ /*features of all the dice*/
+    width: 8vw;
+    background: white;
+    border-radius: 18px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 0;
+    border: none;
+}
+.dice:focus, .dice:hover{ /*slight color change upon hovering or tabbing to dice*/
+    background: #E2F4FF;
+}
+#line{
+    width: 1%;
+    background: #D4E3EC;
+    height: 5px;
+    border-radius: 5px;
+    margin: 30px;
+    transition:1800ms ease-in-out;
+}
+#roll-button{ /*features of the button that rolls the dice*/
+    background: #CEEDC7;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 5px;
+    margin-bottom: 30px;
+    width: 200px;
+    border: none;
+    font-size: 1em;
+    transition: 0.2s;
+}
+#roll-button:hover, #roll-button:focus{ /*scale roll button upon hovering*/
+    transition: 0.5s;
+    transform: scale(1.2);
+}
+#roll-button:active{ /*scale roll button upon tabbing to it*/
+    scale: 0.8;
+    transition: 0.1s;
+    background: #FFBCB8;
+}
+#scoreside { /*properties for the the right side of the page content. Where the score is placed.*/
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 40px;
+}
+#scoreboard1{/*properties for the the whole container of scores*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    border-radius: 10px;
+}
+.grid-row { /*each row in the scoreboard*/
+    display: flex;
+    background: linear-gradient(to right, #CEEDC7 33.33%, #F2EDD3 33.33% 66.66%, #FFD4B2 66.66%); /*linear gradient but with 0 width on the gradient. makes it look like three separate colors.*/
+    flex-direction: row;
+    justify-content: space-around;
+    text-align: center;
+
+
+    width: 93%;
+    border: none;
+    padding: 0;
+    align-items: center;
+    
+    font-size: 1.1em;
+    margin: 1.5%;
+    border-radius: 5px;
+    height: 35px;
+    transition: 0.5s;
+}
+.grid-row:hover, .grid-row:focus{ /*scale upon hovering over a row*/
+    scale: 1.2;
+    transition: 0.5s;
+    cursor: pointer;
+}
+.grid-item{ /*properties of any item in the scoreboard, i.e makes sure every item is spaced out evenly on the row*/
+    display: flex;
+    width: 10%;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    border-radius: 20px;
+}
+
+#score-row{ /*properties of the row in the scoreboard that shows the total score*/
+    margin-bottom: 10px;
+    display: flex;
+    background: linear-gradient(to right, #CEEDC7 33.33%, #F2EDD3 33.33% 66.66%, #FFD4B2 66.66%);
+    flex-direction: row;
+    justify-content: space-around;
+    text-align: center;
+
+    width: 100%;
+    border: none;
+    padding: 0;
+    align-items: center;
+
+    font-size: 1.1em;
+    border-radius: 5px;
+    height: 40px;
+}
+#current-player{ /*row for showing what players turn it is.*/
+    margin-bottom: 10px;
+    margin-top: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    text-align: center;
+
+    width: 100%;
+    border: none;
+    padding: 0;
+    align-items: center;
+
+    font-size: 1.1em;
+    border-radius: 5px;
+    height: 40px;
+}
+.arrow{ /*arrows in the "current-player" row that are turned on and off acordningly*/
+    display: flex;
+    flex: 1 1 1;
+    width: 160px;
+    height: 35px;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+}
+#player-1{/*specifically the arrow for player 1*/
+    opacity: 1;
+}
+#player-2{/*specifically the arrow for player 2*/
+    opacity: 0;
+}
+
+#overlay{ /*overlay when the game is over that makes the screen darker*/
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+    cursor: pointer;
+}
+#popup{ /*box that shows up when the game is over that displays which player has won*/
+    display: flex;
+
+    background: white;
+    border-radius: 10px;
+    width: 50%;
+    height: 50%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 5em;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
+#reset-button{ /*button that shows up when the game is over that resets the game*/
+    display: flex;
+
+    background: #CEEDC7;
+    border-radius: 10px;
+    width: 20%;
+    height: 10%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    font-size: 2em;
+
+    position: absolute;
+    top: 70%;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    transition: 0.5s;
+}
+#reset-button:hover, #reset-button:focus{
+    transition: 0.5s;
+    transform: scale(1.2);
+}
+
+@media only screen and (max-width: 991px) { /*responsive page when the screen is less than 992 pixels wide (for some tablets or other)*/
+    #content{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+        margin-top: 400px;
+    }
+    #playspace{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin-top: 80px;
+    }
+    #scoreside {
+        background: url(../Images/wave-haikei-horizontal.svg);
+        background-size: cover;
+        padding-top: 100px;
+    }
+    .dice{
+        width: 12vw;
+    }
+    body{
+        background: white;
+    }
+    .grid-row {
+        height: 40px;
+    }
+    #score-row{
+        height: 40px;
+    }
+    #popup{
+        width: 80%;
+        font-size: 4.5em;
+    }
+    #reset-button{
+        width: 30%;
+        font-size: 1.9em;
+    }
+}
+@media only screen and (max-width: 600px) { /*responsive page when the screen is less than 600 pixels wide (generally for phones)*/
+    .dice{
+        margin-left: 10px;
+        margin-right: 10px;
+        width: 100px;
+        background: white;
+        border-radius: 10px;
+    }
+    #score-row{
+        
+        scale: 1;
+    }
+    .grid-row {
+        scale: 0.9;
+        font-size: 1em;
+    }
+    #popup{
+        width: 85%;
+        font-size: 3em;
+    }
+    #reset-button{
+        width: 50%;
+        font-size: 1.5em;
+    }
+    #scoreboard1{
+        width: 280px;
+    }
+}
+
+@media only screen and (max-height: 730px) { /*specifically responsive for the scoreboard when the screenheight is less than 731 pixels*/
+    #scoreside {
+        margin-top: 60px;
+    }
+}
+@media only screen and (max-height: 710px) { /*specifically responsive for the scoreboard when the screenheight is less than 711 pixels*/
+    #scoreside {
+        margin-top: 100px;
+    }
+}
+@media only screen and (max-height: 670px) { /*specifically responsive for the scoreboard when the screenheight is less than 671 pixels*/
+    #scoreside {
+        margin-top: 130px;
+    }
+}
